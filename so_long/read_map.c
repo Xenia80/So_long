@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lloko <lloko@student.42.fr>                +#+  +:+       +#+        */
+/*   By: pnona <pnona@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/24 19:24:45 by lloko             #+#    #+#             */
-/*   Updated: 2022/05/08 18:36:14 by lloko            ###   ########.fr       */
+/*   Created: 2022/05/22 19:04:41 by pnona             #+#    #+#             */
+/*   Updated: 2022/05/22 19:30:15 by pnona            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,6 @@ void	read_map(char *file, t_game *carta)
 		game_over("Map didn't read");
 	map_in_arr(fd, carta);
 	if (map_check(carta->map.arr, file, carta) != 0)
-	{
-		free(carta->map.arr);
 		game_over("The map contains an error\n");
-	}
 	close (fd);
 }

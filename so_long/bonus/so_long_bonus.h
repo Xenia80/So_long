@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pnona <pnona@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/07 15:22:32 by lloko             #+#    #+#             */
-/*   Updated: 2022/05/21 19:08:12 by pnona            ###   ########.fr       */
+/*   Created: 2022/05/22 18:30:40 by pnona             #+#    #+#             */
+/*   Updated: 2022/05/22 18:30:42 by pnona            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <mlx.h>
-# include <stdio.h> /* delete */
 # include "../ft_printf/ft_printf.h"
 # include "../libft/libft.h"
 # include "../gnl/get_next_line.h"
@@ -73,7 +72,7 @@ typedef struct s_game
 	int			move_vr;
 	t_map		map;
 	t_player	player;
-	t_vrag		vrag;
+	t_vrag		*vrag;
 	t_sprite	sprite;
 }				t_game;
 
@@ -89,8 +88,10 @@ void	move(t_game *carta);
 
 int		count_vrag(char **map, t_game *carta);
 void	push_image_vrag(t_game *carta);
-void	touch_vrag(t_game *carta, int y, int x);
+void	touch_vrag(t_game *carta);
 void	anim_vrag(t_game *carta);
 void	move_enemy(t_game *carta);
+void	clean_en_lst(t_game *carta);
+void	add_enem(t_game *carta, int r, int c);
 
 #endif

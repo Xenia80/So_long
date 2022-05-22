@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pnona <pnona@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/14 14:46:38 by lloko             #+#    #+#             */
-/*   Updated: 2022/05/21 17:37:25 by pnona            ###   ########.fr       */
+/*   Created: 2022/05/22 18:29:11 by pnona             #+#    #+#             */
+/*   Updated: 2022/05/22 18:29:14 by pnona            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static int	checkcol(t_game *carta, int y, int x)
 			else
 				return (0);
 		}
-		touch_vrag(carta, y, x);
+		++carta->step;
 		return (1);
 	}
 	return (0);

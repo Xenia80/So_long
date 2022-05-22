@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pnona <pnona@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/23 12:06:00 by lloko             #+#    #+#             */
-/*   Updated: 2022/05/21 19:20:13 by pnona            ###   ########.fr       */
+/*   Created: 2022/05/22 18:30:01 by pnona             #+#    #+#             */
+/*   Updated: 2022/05/22 18:30:03 by pnona            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void	init_game(char *file, t_game *carta)
 	carta->coll = 0;
 	carta->step = 0;
 	carta->sprite.anim = 8;
-	// carta->move_vr = 0;
-	// carta->vrag = NULL;
+	carta->move_vr = 0;
+	carta->vrag = NULL;
 	carta->mlx = mlx_init();
 	read_map(file, carta);
 }

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pnona <pnona@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/15 19:20:21 by lloko             #+#    #+#             */
-/*   Updated: 2022/05/21 19:16:35 by pnona            ###   ########.fr       */
+/*   Created: 2022/05/22 18:22:17 by pnona             #+#    #+#             */
+/*   Updated: 2022/05/22 18:29:02 by pnona            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,10 @@ int	count_vrag(char **map, t_game *carta)
 		while (map[i][++j])
 		{
 			if (map[i][j] == 'V')
+			{
 				carta->v_count++;
-				carta->vrag.vrag_x = j;
-				carta->vrag.vrag_y = i;
+				add_enem(carta, i, j);
+			}
 		}
 	}
 	if (carta->v_count < 1)
@@ -52,50 +53,43 @@ void	anim_vrag(t_game *carta)
 	i++;
 }
 
-// static void	vr_left(t_vrag *vr, t_game *carta)
-// {
-// 	if (carta->map.arr[vr->vrag_y][vr->vrag_x - 1] == '0')
-// 	{
-// 		carta->map.arr[vr->vrag_y][vr->vrag_x] = '0';
-// 		carta->map.arr[vr->vrag_y][vr->vrag_x - 1] = 'V';
-// 	}
-// 	else if (carta->map.arr[vr->vrag_y][vr->vrag_x - 1] == '1'
-// 			|| carta->map.arr[vr->vrag_y][vr->vrag_x - 1] == 'C')
-// 		vr->dir = 0;
-// 	(vr->vrag_x)--;
-// }
+static void	vr_left(t_vrag *vr, t_game *carta)
+{
+	if (carta->map.arr[vr->vrag_y][vr->vrag_x - 1] == '0')
+	{
+		carta->map.arr[vr->vrag_y][vr->vrag_x] = '0';
+		carta->map.arr[vr->vrag_y][vr->vrag_x - 1] = 'V';
+	}
+	else if (carta->map.arr[vr->vrag_y][vr->vrag_x - 1] == '1'
+			|| carta->map.arr[vr->vrag_y][vr->vrag_x - 1] == 'C')
+		vr->dir = 0;
+	(vr->vrag_x)--;
+}
 
-// static void	vr_right(t_vrag *vr, t_game *carta)
-// {
-// 	if (carta->map.arr[vr->vrag_y][vr->vrag_x + 1] == '0')
-// 	{
-// 		carta->map.arr[vr->vrag_y][vr->vrag_x] = '0';
-// 		carta->map.arr[vr->vrag_y][vr->vrag_x + 1] = 'V';
-// 	}
-// 	else if (carta->map.arr[vr->vrag_y][vr->vrag_x + 1] == '1'
-// 			|| carta->map.arr[vr->vrag_y][vr->vrag_x + 1] == 'C')
-// 		vr->dir = 1;
-// 	(vr->vrag_x)++;
-// }
+static void	vr_right(t_vrag *vr, t_game *carta)
+{
+	if (carta->map.arr[vr->vrag_y][vr->vrag_x + 1] == '0')
+	{
+		carta->map.arr[vr->vrag_y][vr->vrag_x] = '0';
+		carta->map.arr[vr->vrag_y][vr->vrag_x + 1] = 'V';
+	}
+	else if (carta->map.arr[vr->vrag_y][vr->vrag_x + 1] == '1'
+			|| carta->map.arr[vr->vrag_y][vr->vrag_x + 1] == 'C')
+		vr->dir = 1;
+	(vr->vrag_x)++;
+}
 
-// void	move_enemy(t_game *carta)
-// {
-// 	t_vrag	*tmp;
+void	move_enemy(t_game *carta)
+{
+	t_vrag	*tmp;
 
-// 	tmp = carta->vrag;
-// 	while (tmp)
-// 	{
-// 		if (tmp->dir == 0)
-// 			vr_right(tmp, carta);
-// 		else
-// 			vr_left(tmp, carta);
-		// if (tmp->r == data->player.r && tmp->c == data->player.c)
-		// {
-		// 	ft_printf("YOU ARE DEFEATED! Score: %d\n", data->score);
-		// 	clean_en_lst(data);
-		// 	clean(data);
-		// 	end_game(NULL);
-		// }
-// 		tmp = tmp->next;
-// 	}
-// }
+	tmp = carta->vrag;
+	while (tmp)
+	{
+		if (tmp->dir == 0)
+			vr_right(tmp, carta);
+		else
+			vr_left(tmp, carta);
+		tmp = tmp->next;
+	}
+}

@@ -28,6 +28,7 @@ SRC_BONUS =	bonus/read_map_bonus.c \
 			bonus/paint_bonus.c \
 			bonus/hooks_bonus.c \
 			bonus/utils_bonus.c \
+			bonus/utils2_bonus.c \
 			gnl/get_next_line.c \
 	  		gnl/get_next_line_utils.c 
 

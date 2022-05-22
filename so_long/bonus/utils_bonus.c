@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pnona <pnona@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/07 16:32:25 by lloko             #+#    #+#             */
-/*   Updated: 2022/05/21 18:16:40 by pnona            ###   ########.fr       */
+/*   Created: 2022/05/22 18:30:49 by pnona             #+#    #+#             */
+/*   Updated: 2022/05/22 18:30:51 by pnona            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,16 @@ int	move_player(t_game *carta, int y, int x)
 	return (0);
 }
 
-void	touch_vrag(t_game *carta, int y, int x)
+void	touch_vrag(t_game *carta)
 {
-	if (carta->map.arr[y][x] == 'V')
-		game_over("You touch enemy!\n");
+	t_vrag	*tmp;
+
+	tmp = carta->vrag;
+	while (tmp)
+	{
+		if (tmp->vrag_y == carta->player.player_y
+			&& tmp->vrag_x == carta->player.player_x)
+			game_over("You touch enemy!\n");
+		tmp = tmp->next;
+	}
 }

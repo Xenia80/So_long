@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pnona <pnona@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/08 17:35:19 by lloko             #+#    #+#             */
-/*   Updated: 2022/05/21 19:18:00 by pnona            ###   ########.fr       */
+/*   Created: 2022/05/22 18:29:28 by pnona             #+#    #+#             */
+/*   Updated: 2022/05/22 18:29:30 by pnona            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,15 +115,21 @@ static void	draw_player_and_collect(t_game *carta)
 
 int	paint(t_game *carta)
 {
+	char	*str;
+
 	draw_items(carta);
 	draw_player_and_collect(carta);
 	anim_vrag(carta);
-	// if (carta->move_vr == 128)
-	// {
-	// 	carta->move_vr = 0;
-	// 	move_enemy(carta);
-	// }
-	// carta->move_vr++;
-	// //vivod count vwin
+	touch_vrag(carta);
+	if (carta->move_vr == 50)
+	{
+		carta->move_vr = 0;
+		move_enemy(carta);
+	}
+	carta->move_vr++;
+	str = ft_itoa(carta->step);
+	mlx_string_put(carta->mlx, carta->win, 0, 0, 000000, "STEP PLAYER:");
+	mlx_string_put(carta->mlx, carta->win, 128, 0, 000000, str);
+	free(str);
 	return (0);
 }
